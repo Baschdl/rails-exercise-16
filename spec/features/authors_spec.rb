@@ -18,7 +18,6 @@ describe "Authors page", :type => :feature do
   end
 
   it "should create a instance of Author after entering data" do
-    @author = Author.new(first_name: "Alan", last_name: "Turing", homepage: "http://wikipedia.org/Alan_Turing")
-    expect(@author).not_to be_nil
+    except(build(:author)).to be_valid
   end
 end
