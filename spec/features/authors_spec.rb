@@ -6,4 +6,9 @@ describe "Authors page", :type => :feature do
     visit "/authors/new"
     expect(page).to have_text("New author")
   end
+
+  it "should have the text field 'first name'" do
+    visit "/authors/new"
+    expect(page).to have_text("First name")
+  end
 end
