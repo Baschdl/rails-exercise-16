@@ -1,5 +1,5 @@
 <h1>New authors page</h1>
-<%= form_for :authors do |f| %>
+<%= form_for :authors, url: authors_path do |f| %>
     <p>
       <%= f.label :first_name %><br>
       <%= f.text_field :first_name %>
