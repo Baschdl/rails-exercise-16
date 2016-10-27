@@ -22,4 +22,14 @@ describe "Authors page", :type => :feature do
     expect(@author).not_to be_nil
   end
 
+  it 'should save an new author' do
+    visit '/authors/new'
+    @author = build(:author)
+    fill_in "First name", with: @author.first_name
+    fill_in "Last name", with: @author.last_name
+    fill_in "Homepage", with: @author.homepage
+    click_button "Create Author"
+    except(Author.find_by(first_name: @author.first_name, last_name: @author.last_name, homepage: @author.homepage)).not_to be_nil
+  end
+
 end
