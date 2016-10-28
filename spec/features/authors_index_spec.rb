@@ -10,4 +10,9 @@ describe 'Authors index page', :type => :feature do
     expect(page).to have_text(@author.name)
   end
 
+  it 'should display right column name' do
+    visit '/authors/'
+    expect(page).to have_text('Name')
+  end
+
 end
