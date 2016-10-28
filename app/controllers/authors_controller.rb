@@ -1,4 +1,8 @@
 class AuthorsController < ApplicationController
+  def show
+    @author = Author.find(params[:id])
+  end
+
   def new
   end
 
@@ -9,9 +13,11 @@ class AuthorsController < ApplicationController
     redirect_to @author
   end
 
+
   private
     def author_params
-      params.fetch(:author, {}).permit(:first_name, :last_name, :homepage)
+      params.permit(:first_name, :last_name, :homepage)
+      #.require(:author)
     end
-  # Should work with require(:author) instead of fetch(:author, {}), but it doesn't
+  # Should work with require(:author)
 end
