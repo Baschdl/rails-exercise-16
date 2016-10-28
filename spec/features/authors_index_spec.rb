@@ -6,8 +6,8 @@ describe 'Authors index page', :type => :feature do
     @author = build(:author)
     @author.save
 
-    visit '/authors/index'
-    except(page).to have_text('Turing')
+    visit '/authors/'
+    expect(page).to have_text(@author.name)
   end
 
 end
