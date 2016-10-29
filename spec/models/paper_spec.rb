@@ -36,9 +36,5 @@ RSpec.describe Paper, type: :model do
   it 'should fail when entering non-integer year (characters)' do
     paper = expect(Paper.new(title: 'COMPUTING MACHINERY AND INTELLIGENCE', venue: 'Mind 49: 433-460', year: 'nineteen-fifty')).to_not be_valid
   end
-
-  it 'should fail when entering no year (integer as string)' do
-    paper = expect(Paper.new(title: 'COMPUTING MACHINERY AND INTELLIGENCE', venue: 'Mind 49: 433-460', year: '1950')).to_not be_valid
-  end
 end
 
