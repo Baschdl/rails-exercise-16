@@ -16,4 +16,20 @@ describe 'Authors new page', :type => :feature do
     visit "/papers/new"
     expect(page).to have_text('Year')
   end
+
+  it 'should save a new paper through website' do
+    visit new_paper_path
+    @paper = build(:paper)
+    fill_in 'Title', with: @paper.title
+    fill_in 'Venue', with: @paper.venue
+    fill_in 'Year', with: @paper.year
+    click_button 'Create Paper'
+    expect(Paper.find_by(title: @paper.title, venue: @paper.venue, year: @paper.year)).not_to be_nil
+  end
+
+  it 'should save and find a new paper through methods' do
+    @paper = build(:paper)
+    @paper.save
+    expect(Paper.find_by(title: @paper.title, venue: @paper.venue, year: @paper.year)).not_to be_nil
+  end
 end
