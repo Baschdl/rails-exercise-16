@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Paper, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should fail when entering no title (empty string)' do
+    paper = expect(Paper.new(title: "", venue: "Mind 49: 433-460", year: 1950)).to_not be_valid
+  end
+
+  it 'should fail when entering no title (no field)' do
+    paper = expect(Paper.new(venue: "Mind 49: 433-460", year: 1950)).to_not be_valid
+  end
 end

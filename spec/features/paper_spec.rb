@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Authors new page', :type => :feature do
+describe 'Papers new page', :type => :feature do
 
   it 'should have the text field "Title"' do
     visit '/papers/new'
