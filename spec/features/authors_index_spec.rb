@@ -28,4 +28,12 @@ describe 'Authors index page', :type => :feature do
     expect(page).to have_text('Edit')
   end
 
+  it 'should have link to destroy author' do
+    @author = build(:author)
+    @author.save
+
+    visit '/authors/'
+    expect(page).to have_text('Destroy')
+  end
+
 end
