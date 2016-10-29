@@ -20,4 +20,12 @@ describe 'Authors index page', :type => :feature do
     expect(page).to have_text('Add author')
   end
 
+  it 'should have link to edit author' do
+    @author = build(:author)
+    @author.save
+
+    visit '/authors/'
+    expect(page).to have_text('Edit')
+  end
+
 end
