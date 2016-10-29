@@ -8,7 +8,7 @@ class AuthorsController < ApplicationController
   end
 
   def new
-    @article = Author.new
+    @author = Author.new
   end
 
   def edit
@@ -41,6 +41,7 @@ class AuthorsController < ApplicationController
 
     redirect_to authors_path
   end
+
 
   private
     def author_params
