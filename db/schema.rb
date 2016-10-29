@@ -11,22 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029182656) do
+ActiveRecord::Schema.define(version: 20161029220029) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "homepage"
+    t.integer  "paper_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "authors", ["paper_id"], name: "index_authors_on_paper_id"
+
   create_table "papers", force: :cascade do |t|
-    t.text     "title"
-    t.text     "venue"
+    t.string   "title"
+    t.string   "venue"
     t.integer  "year"
+    t.integer  "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "papers", ["author_id"], name: "index_papers_on_author_id"
 
 end

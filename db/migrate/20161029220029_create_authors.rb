@@ -4,6 +4,7 @@ class CreateAuthors < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :homepage
+      t.belongs_to :paper, index: true
 
       t.timestamps null: false
     end
