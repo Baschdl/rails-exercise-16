@@ -32,4 +32,12 @@ describe 'Papers new page', :type => :feature do
     @paper.save
     expect(Paper.find_by(title: @paper.title, venue: @paper.venue, year: @paper.year)).not_to be_nil
   end
+
+  it 'should list all papers on paper index page' do
+    @paper = create(:paper)
+    visit papers_path
+    expect(page).to have_text('Title')
+    expect(page).to have_text('Venue')
+    expect(page).to have_text('Year')
+  end
 end
