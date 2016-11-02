@@ -11,6 +11,10 @@ class PapersController < ApplicationController
     @paper = Paper.new
   end
 
+  def edit
+    @paper = Paper.find(params[:id])
+  end
+
   def create
     @paper = Paper.new(paper_params)
 
