@@ -40,4 +40,12 @@ describe 'Papers new page', :type => :feature do
     expect(page).to have_text('Venue')
     expect(page).to have_text('Year')
   end
+
+  it 'should render paper edit page correct' do
+    @paper = create(:paper)
+    visit '/papers/' + @paper.id.to_s + '/edit'
+    expect(page).to have_text('Title')
+    expect(page).to have_text('Venue')
+    expect(page).to have_text('Year')
+  end
 end
