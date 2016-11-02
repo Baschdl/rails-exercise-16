@@ -39,4 +39,12 @@ describe "Authors new page", :type => :feature do
     expect(Author.find_by(first_name: @author.first_name, last_name: @author.last_name, homepage: @author.homepage)).not_to be_nil
   end
 
+  it 'should save changes after edit' do
+    @author = create(:author)
+    visit '/authors/' + @author.id.to_s + '/edit'
+    fill_in 'First name', with: 'Alan Mathison'
+    click_button 'Create Author'
+    expect(Author.find_by(first_name: 'Alan Mathison', last_name: @author.last_name, homepage: @author.homepage)).not_to be_nil
+  end
+
 end
