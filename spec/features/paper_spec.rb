@@ -74,4 +74,10 @@ describe 'Papers new page', :type => :feature do
     expect(page).to have_text(@author.name)
   end
 
+  it 'should have a select box for paper authors' do
+    @paper = create(:paper)
+    visit '/papers/'+@paper.id.to_s+'/edit'
+    expect(page).to have_select('paper authors')
+  end
+
 end
