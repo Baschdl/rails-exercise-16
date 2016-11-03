@@ -48,4 +48,12 @@ describe 'Papers new page', :type => :feature do
     expect(page).to have_text('Venue')
     expect(page).to have_text('Year')
   end
+
+  it 'should save changes after edit' do
+    @author = create(:paper)
+    visit '/papers/' + @author.id.to_s + '/edit'
+    fill_in 'Venue', with: 'Mind 49'
+    click_button 'Create Paper'
+    expect(Paper.find_by(title: @paper.title, venue: 'Mind 49', year: @paper.year)).not_to be_nil
+  end
 end
