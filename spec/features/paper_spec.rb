@@ -50,8 +50,8 @@ describe 'Papers new page', :type => :feature do
   end
 
   it 'should save changes after edit' do
-    @author = create(:paper)
-    visit '/papers/' + @author.id.to_s + '/edit'
+    @paper = create(:paper)
+    visit '/papers/' + @paper.id.to_s + '/edit'
     fill_in 'Venue', with: 'Mind 49'
     click_button 'Create Paper'
     expect(Paper.find_by(title: @paper.title, venue: 'Mind 49', year: @paper.year)).not_to be_nil
