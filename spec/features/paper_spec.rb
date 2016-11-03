@@ -63,4 +63,15 @@ describe 'Papers new page', :type => :feature do
     visit '/papers/'
     expect(page).to have_text('Destroy')
   end
+
+  it 'should list all authors of a paper' do
+    @paper = build(:paper)
+    @author = build(:author)
+    @paper.author = @author
+    @paper.save
+
+    visit '/papers/'+ @paper.id.to_s
+    expect(page).to have_text(@author.name)
+  end
+
 end
