@@ -56,4 +56,11 @@ describe 'Papers new page', :type => :feature do
     click_button 'Create Paper'
     expect(Paper.find_by(title: @paper.title, venue: 'Mind 49', year: @paper.year)).not_to be_nil
   end
+
+  it 'should have link to destroy paper' do
+    @paper = create(:paper)
+
+    visit '/papers/'
+    expect(page).to have_text('Destroy')
+  end
 end
