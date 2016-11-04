@@ -29,8 +29,21 @@
       <%= f.text_field :year %>
     </p>
 
+    <%# TODO: Should not reset to blank%>
     <p>
-      <%= f.collection_select :author_id, Author.all, :id, :first_name, {}, {:multiple => true} %>
+      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
+    </p>
+    <p>
+      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
+    </p>
+    <p>
+      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
+    </p>
+    <p>
+      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
+    </p>
+    <p>
+      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
     </p>
 
     <p>
