@@ -1,6 +1,6 @@
 class Author < ActiveRecord::Base
-  belongs_to :paper, :foreign_key => :paper_id
-  has_many :papers
+  has_many :authorships
+  has_many :papers, through: :authorships
 
   validates :last_name, presence: true, length: { minimum: 2 }
 

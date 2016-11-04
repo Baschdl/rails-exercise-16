@@ -30,6 +30,10 @@
     </p>
 
     <p>
+      <%= f.collection_select :author_id, Author.all, :id, :first_name, {}, {:multiple => true} %>
+    </p>
+
+    <p>
       <%= f.submit 'Create Paper' %>
     </p>
 <% end %>
