@@ -67,7 +67,7 @@ describe 'Papers new page', :type => :feature do
   it 'should list all authors of a paper' do
     @paper = build(:paper)
     @author = build(:author)
-    @paper.author = @author
+    @paper.authors << @author
     @paper.save
 
     visit '/papers/'+ @paper.id.to_s
