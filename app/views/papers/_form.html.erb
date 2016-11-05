@@ -29,22 +29,10 @@
       <%= f.text_field :year %>
     </p>
 
-    <%# TODO: Should not reset to blank%>
-    <p>
-      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
-    </p>
-    <p>
-      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
-    </p>
-    <p>
-      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
-    </p>
-    <p>
-      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
-    </p>
-    <p>
-      <%= f.collection_select :author_id, Author.all, :id, :first_name, {:include_blank => true, :selected => 'blank'} %>
-    </p>
+    <% 5.times do |i| %>
+        <%= f.label "Author #{i+1}" %>
+        <%= f.collection_select :author_ids, Author.all, :id, :name, {}, {name: "paper[author_ids][]", id: "paper_author_id_#{i+1}"} %>
+    <% end %>
 
     <p>
       <%= f.submit 'Create Paper' %>
