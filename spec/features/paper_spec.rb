@@ -80,4 +80,19 @@ describe 'Papers new page', :type => :feature do
     expect(page).to have_select('paper_author_id_1')
   end
 
+  it 'should save changes on paper edit page to author list' do
+    author = create(:author)
+    author_plag = Author.new(first_name: 'Peter', last_name: 'Plagiarist')
+    author_plag.save
+    @paper = build(:paper)
+    @paper.authors << author
+    @paper.save
+
+    visit '/papers/'+ @paper.id.to_s + '/edit'
+    select author_plag.name, :from => 'paper_author_id_1'
+    click_button 'Create Paper'
+    expect(Paper.find_by(title: @paper.title, venue: @paper.venue, year: @paper.year).
+        authors).to include(author_plag)
+  end
+
 end
