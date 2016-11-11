@@ -27,6 +27,7 @@ class PapersController < ApplicationController
 
   def update
     @paper = Paper.find(params[:id])
+    @paper.authors
 
     if @paper.update(paper_params)
       redirect_to @paper
@@ -44,6 +45,6 @@ class PapersController < ApplicationController
 
   private
   def paper_params
-    params.require(:paper).permit(:title, :venue, :year)
+    params.require(:paper).permit(:title, :venue, :year, { author_ids: [] })
   end
 end
