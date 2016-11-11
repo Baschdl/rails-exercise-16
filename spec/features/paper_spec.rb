@@ -96,4 +96,11 @@ describe 'Papers new page', :type => :feature do
         authors).to include(author_plag)
   end
 
+  it 'should allow to filter by year' do
+    create(:paper)
+    create(:paper, title: 'go to statement considered harmful', venue: 'communications of the acm', year: 1968)
+    visit papers_path(year: 1950)
+    expect(page).to have_text('COMPUTING MACHINERY AND INTELLIGENCE')
+    expect(page).not_to have_text('go to statement considered harmful')
+  end
 end
